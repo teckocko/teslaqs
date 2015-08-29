@@ -15,10 +15,14 @@ class ChartsController < ApplicationController
   # GET /charts/new
   def new
     @chart = Chart.new
+    @currencypairs = Chart.currencypairs
+    @intervals = Chart.intervals
   end
 
   # GET /charts/1/edit
   def edit
+    @currencypairs = Chart.currencypairs
+    @intervals = Chart.intervals
   end
 
   # POST /charts
@@ -69,6 +73,6 @@ class ChartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chart_params
-      params.require(:chart).permit(:recommendation, :image)
+      params.require(:chart).permit(:recommendation, :image, :currencypair, :interval)
     end
 end

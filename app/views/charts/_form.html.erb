@@ -19,6 +19,15 @@
     <%= f.label :image %><br>
     <%= f.file_field :image %>
   </div>
+  <div class="field"> 
+    <%= f.label :currencypair %><br>
+      <%= f.select :currencypair, options_for_select(@currencypairs.collect { |s| [s[0].humanize, s[0]] }, selected: @chart.currencypair), {} , class: "form-control" %>
+  </div>
+  <div class="field"> 
+    <%= f.label :interval %><br>
+      <%= f.select :interval, options_for_select(@intervals.collect { |s| [s[0].humanize, s[0]] }, selected: @chart.interval), {} , class: "form-control" %>
+  </div>
+   
 
   <div class="actions">
     <%= f.submit %>

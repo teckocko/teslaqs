@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+<strong>Currencypair:</strong>
+<%= @chart.currencypair %>
   <strong>Recommendation:</strong>
   <%= @chart.recommendation %>
+  <strong>Interval:</strong>
+  <%= @chart.interval %>
   <%= image_tag @chart.image.url %>
 </p>
 
