@@ -2,26 +2,117 @@
 
 <h1>Listing Charts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Recommendation</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @charts.each do |chart| %>
-      <tr>
-        <td><%= chart.recommendation %></td>
-        <td><%= link_to 'Show', chart %></td>
-        <td><%= link_to 'Edit', edit_chart_path(chart) %></td>
-        <td><%= link_to 'Destroy', chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Chart', new_chart_path %>
+
+
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  <div class="mdl-tabs__tab-bar">
+    <a href="#starks-panel" class="mdl-tabs__tab is-active">30min</a>
+    <a href="#lannisters-panel" class="mdl-tabs__tab">Daily</a>
+    <a href="#targaryens-panel" class="mdl-tabs__tab">Weekly</a>
+  </div>
+
+  <div class="mdl-tabs__panel is-active" id="starks-panel">
+    <table>
+      <thead>
+      <tr>
+        <th>Recommendation</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @halfhour.each do |chart| %>
+          <tr>
+            <td><%= chart.currencypair %></td>
+            <td><%= chart.recommendation %></td>
+            <td><%= image_tag chart.image.url(:medium) %></td>
+            <td><%= link_to 'Show', chart %></td>
+            <td><%= link_to 'Edit', edit_chart_path(chart) %></td>
+            <td><%= link_to 'Destroy', chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="mdl-tabs__panel" id="lannisters-panel">
+    <table>
+      <thead>
+      <tr>
+        <th>Recommendation</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+
+    <tbody>
+    <% @daily.each do |chart| %>
+        <tr>
+          <td><%= chart.currencypair %></td>
+          <td><%= chart.recommendation %></td>
+          <td><%= image_tag chart.image.url(:medium) %></td>
+          <td><%= link_to 'Show', chart %></td>
+          <td><%= link_to 'Edit', edit_chart_path(chart) %></td>
+          <td><%= link_to 'Destroy', chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
+  <div class="mdl-tabs__panel" id="targaryens-panel">
+    <table>
+      <thead>
+      <tr>
+        <th>Recommendation</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @weekly.each do |chart| %>
+          <tr>
+            <td><%= chart.currencypair %></td>
+            <td><%= chart.recommendation %></td>
+            <td><%= image_tag chart.image.url(:medium) %></td>
+            <td><%= link_to 'Show', chart %></td>
+            <td><%= link_to 'Edit', edit_chart_path(chart) %></td>
+            <td><%= link_to 'Destroy', chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+  </div>
+</div>
+
+
+<% @weekly.each do |chart| %>
+<style>
+    .demo-card-wide.mdl-card {
+        width: 512px;
+    }
+    .demo-card-wide > .mdl-card__title {
+        color: #fff;
+        height: 400px;
+        background: url('<%= chart.image.url%>') center / cover;
+    }
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
+
+<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text"><%= chart.currencypair %></h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <%= chart.recommendation %>
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      Show
+    </a>
+  </div>
+  <div class="mdl-card__menu">
+    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+      <i class="material-icons">share</i>
+    </button>
+  </div>
+</div>
+<br>
+<% end %>

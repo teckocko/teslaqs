@@ -5,6 +5,9 @@ class ChartsController < ApplicationController
   # GET /charts.json
   def index
     @charts = Chart.all
+    @weekly = Chart.weekly
+    @halfhour = Chart.halfhour
+    @daily = Chart.daily
   end
 
   # GET /charts/1
