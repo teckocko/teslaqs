@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829125944) do
+ActiveRecord::Schema.define(version: 20150901101704) do
 
   create_table "charts", force: :cascade do |t|
     t.text     "recommendation"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150829125944) do
     t.datetime "image_updated_at"
     t.integer  "currencypair"
     t.integer  "interval"
+    t.text     "image_meta"
   end
 
   create_table "currency_pairs", force: :cascade do |t|

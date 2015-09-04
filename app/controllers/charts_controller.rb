@@ -76,6 +76,6 @@ class ChartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chart_params
-      params.require(:chart).permit(:recommendation, :image, :currencypair, :interval)
+      params.require(:chart).permit(:recommendation, :image, :currencypair, :interval, :image_meta)
     end
 end

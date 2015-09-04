@@ -84,11 +84,12 @@
 <% @weekly.each do |chart| %>
 <style>
     .demo-card-wide.mdl-card {
-        width: 512px;
+        width: <%= chart.image.width%>px;
+
     }
     .demo-card-wide > .mdl-card__title {
+        height: <%= chart.image.height%>px;
         color: #fff;
-        height: 400px;
         background: url('<%= chart.image.url%>') center / cover;
     }
     .demo-card-wide > .mdl-card__menu {
