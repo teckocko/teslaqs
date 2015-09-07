@@ -4,10 +4,18 @@ class ChartsController < ApplicationController
   # GET /charts
   # GET /charts.json
   def index
-    @charts = Chart.all
-    @weekly = Chart.weekly
-    @halfhour = Chart.halfhour
-    @daily = Chart.daily
+    @currencypairs = Currencypair.all
+    if params[:currencypair_id]
+      @charts = Chart.where(currencypair_id: params[:currencypair_id])
+      @weekly = @charts.weekly
+      @halfhour = @charts.halfhour
+      @daily = @charts.daily
+    else
+      @charts = Chart.all
+      @weekly = @charts.weekly
+      @halfhour = @charts.halfhour
+      @daily = @charts.daily
+    end
   end
 
   # GET /charts/1
@@ -18,13 +26,13 @@ class ChartsController < ApplicationController
   # GET /charts/new
   def new
     @chart = Chart.new
-    @currencypairs = Chart.currencypairs
+
     @intervals = Chart.intervals
   end
 
   # GET /charts/1/edit
   def edit
-    @currencypairs = Chart.currencypairs
+
     @intervals = Chart.intervals
   end
 
@@ -76,6 +84,6 @@ class ChartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chart_params
-      params.require(:chart).permit(:recommendation, :image, :currencypair, :interval, :image_meta)
+      params.require(:chart).permit(:recommendation, :image, :currencypair_id, :interval, :image_meta)
     end
 end

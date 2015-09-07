@@ -12,8 +12,8 @@
   <% end %>
 
 <div class="field">
-  <%= f.label :currencypair %><br>
-  <%= f.select :currencypair, options_for_select(@currencypairs.collect { |s| [s[0].humanize, s[0]] }, selected: @chart.currencypair), {} , class: "form-control" %>
+  <%= f.label :currencypair_id %><br>
+  <%= f.select :currencypair_id, options_for_select(Currencypair.all.collect { |s| [s.pairname.humanize, s.id] }, selected: @chart.currencypair), {} , class: "form-control" %>
 </div>
 <div class="field">
   <%= f.label :interval %><br>

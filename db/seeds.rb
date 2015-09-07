@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Currencypair.create(pairname: 'eurrsd')
+Currencypair.create(pairname: 'usdrsd')
+Currencypair.create(pairname: 'chfrsd')
+Currencypair.create(pairname: 'rubrsd')
+Currencypair.create(pairname: 'gbprsd')
+Currencypair.create(pairname: 'cnyrsd')
+
+puts "pairs created"

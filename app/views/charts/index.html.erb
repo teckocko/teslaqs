@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Charts</h1>
-
 <%= link_to 'New Chart', new_chart_path %>
 
 
@@ -24,7 +23,7 @@
       <tbody>
       <% @halfhour.each do |chart| %>
           <tr>
-            <td><%= chart.currencypair %></td>
+            <td><%= chart.currencypair.pairname %></td>
             <td><%= chart.recommendation %></td>
             <td><%= image_tag chart.image.url(:medium) %></td>
             <td><%= link_to 'Show', chart %></td>
@@ -47,7 +46,7 @@
     <tbody>
     <% @daily.each do |chart| %>
         <tr>
-          <td><%= chart.currencypair %></td>
+          <td><%= chart.currencypair.pairname %></td>
           <td><%= chart.recommendation %></td>
           <td><%= image_tag chart.image.url(:medium) %></td>
           <td><%= link_to 'Show', chart %></td>
@@ -69,7 +68,7 @@
       <tbody>
       <% @weekly.each do |chart| %>
           <tr>
-            <td><%= chart.currencypair %></td>
+            <td><%= chart.currencypair.pairname %></td>
             <td><%= chart.recommendation %></td>
             <td><%= image_tag chart.image.url(:medium) %></td>
             <td><%= link_to 'Show', chart %></td>
@@ -99,7 +98,7 @@
 
 <div class="demo-card-wide mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text"><%= chart.currencypair %></h2>
+    <h2 class="mdl-card__title-text"><%= chart.currencypair.pairname %></h2>
   </div>
   <div class="mdl-card__supporting-text">
     <%= chart.recommendation %>

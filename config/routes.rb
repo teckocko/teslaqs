@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  get 'currencypairs/index'
+
+  resources :currencypairs do
+    resources :charts
+  end
   resources :charts
+  root "charts#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
